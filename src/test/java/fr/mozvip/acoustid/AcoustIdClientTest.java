@@ -1,0 +1,54 @@
+package fr.mozvip.acoustid;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
+import fr.mozvip.acoustid.model.Artist;
+import fr.mozvip.acoustid.model.Recording;
+import junit.framework.Assert;
+
+public class AcoustIdClientTest {
+
+	public final static String TEST_FINGERPRINT = "AQADtEqSSFKiKEqQbzvgr8EH-YcffDvOH-J7fDjS_jhT-MhBHT-k4HxQHz6-4fChXLiF4zkefDu2B1A-Nfjhv9iP__gPYch_4DCp4BbuI9oHfT0OV8cVHD7kwzo-5EF6nKiL_vhxG9txS7hxD3-KH9uPj8cJH19w_fBx9njADxybQ-dhHzmO1MKPq4L2EEd-PNWj4PxwMPFWhK_x4zGqyIf4w_nQoxp3uAfz7Di6w1UWQefRqMSXBT3847COahx6NMcX1BuaB1Av9GhUbYO8D86DHy9cZRny43AcIp8u_Bcae9Cq40d_OGaH7zBvyPBbtK_w486LHq4IPxx-oPly_HjyoIcvQ_vwPWh-7Nfh56jRjrHQPMPnQR--RGEWVC3yC454uD6eB8d15OJhDpN0PDPOGCE8XjD6H_yQ_EGWXMlQjRG-MsG_4SeuostppE-hNtiFnMEz4cck5THwR-gZwfGxHb_gP0auLBApnIj2oqfx0Dhf4qeK7gmR5jIuXIX4CE9xBmm3OHh1oN8RG8_x4-gh8kHPBz-6MkPzFF9_aPrCwT9-LvCL0MqIK0d-NDGDzjv0fDiVo-GWo7oKnTuqHM9xNsLRJzu0POiPe_iPMzyqHw4PHZ3xBv3hHGGP0DuDxj6k78EN88nxhj4-JQrRo3kE5TEeHX9hPcWPermghdJi4dLh0LhGfDe0FNNDHT_iOeGCS7jCI3xyeDo00TFG0_iE74d7CfolNNeDblJU5Ex2wTGPKxeOdC-e3JgT5YH2Yxd-7XDSRC9KPvihC42TGz1TvPjxE-aV4PKDWkoMLTmN1xK0LNmLkpmFHc7xHc9emOE0lByaj8fcwZeQX8T-4kcYixqKtcIhxhfeUMGZw_HxnqgcQgujC9cjbNPxEtcFLUzCo0-MHk60B02-QD92XDtC3miOC09a4UUTXei0IEyl2WiXQbMuNDFzvImOhkVHEbPguHhosKcU_ANzeGr1QHtw_LFx08SP50HJS2isi_h4OKRi_BJaxkUTbiT0MJPww9-DJ8YPDS_SrCu6RnnxN3iyo5l29MQX6riQH1cPLVK-oMuHZkyU414suEIf6XiK5ugzvDlcfQ4-Dn2LKWoyLtCSK0dv4cGF5hGNPjOeGw-DZ4fHXHiPKc9idJNk497hicenHM-P5j2qhit0oVl3-BeqFWGSRgmH_kGe7GiqC_qRM0WN57ikXEKjP8F0THmO8CpqXtAiHo-O69bgB48P_SioF3mTZKi2D78ZPELFwwdzxsiVHLo-nEh5Bc9RxUqPKR2NI00TfNyhH84f42nQ5jq2t_hnPGNQRVRwSg-hK0d_aPmNfWRwzMK-wMllfB8qJzqaJ5MAy3gWUcLY1BpcccWXC48PM9FxhKwj_F3QhTmLPDzmSeih5cV_fMGzown3or8CLbF01GI0vBHEKDueZ7jE4xX84t_xMOSCc4fOC-3RTHpxsUZTE3MP8-jx4_vQjWLx6_CRT_iQ1id-H6L2F8yYDF90sMyN3kJz5tCjY8cT4tmHHz0aX_iO8zgTxRH64yp8fA8O58Q14YfxBxdsPIU_B1d0_Dt-PMuMSh_0oznRB90v_MRp4TDxQ_jx_LgyTniOXyJE7nh4pD_M6DlyJRm0H-FJNCt-Yt2iqPh0cN6FkJL0QPwS4yuMy8FH-HiYoy-e47_xP8GTGBp7HOmPHkffo6mOH89VPPKO7McXBYqydTPaEdeNH-4W4rh-6Mvx5Qg_HDncEd_x4yfE6_jh46SFt_B4qE6O73CVHEff4-GM90Plo6my4Ix0vBpCPnh2_PCPKxd6S-hx4Yp6pO6DR_ShM0f-4_3hKkdJYn-IHD90SkP2PviF8HogRm_w4yORs8cPnEceBoXO4XFHhFLUGJ6ULyKO50feQezwHDUT4kKPPSaEmMeeLGg0ERweXCbstMgV4sd3LcSOxkFv4UfVHE1HQz-aCT2PowmPejqqHk0PYcqDn2h-5OHxRA9Ci4Yvot-FH88u6Ep4aB4nNDgePsG36MJ1tIqG5seL9mgm58GPe6h-Gk4mHv0QvfhxOSKuiTqu44vHoomsB_2HPjnCfCp0LTrC8CzK6bh4NI9FTI-LK-FaNNoRvjca8tBVouFW4sKTBDOaM6i4_Yib47oofPvQPB8q5wijSviWHKIWhaiVJxh_HL4jPG5SXITOoc-OJuKcBI8XRsGNNgma6TrOGPdxQV-Oa4H14ZJ0TImTJIU2jUeTo7iyNHgtpNxdvMfHo8f0FM8Lc4kl_EEeHfyhlUTz4Ar-g9fh8sG3KPiVSYGmoz_-4rOTwBZ-fPLRF66iw_FB-mhyFlceID-YBz6NHk8-TDdcwmQsIdktXEcYHrW0Cl9y_DAu7YjU5EGj8IN2Fs7VKAjz48OVJNjRjmjyBWc-4jrxLGiq4JkIH7EnbIqUfNDUXMijPMHhm7iCUvGLMD_645pR5R5GC-dRR_AzQnuMHzfeo8mFjhPRNVIFxzquo1l5PFEe4_Af5HGI_2iuHI7QXTym8ELlgNcZ4smDS2hOI7SOax9-AECMM8AIxQAAwlEAHAaKEgYAQBQj5CSxAiFkGSLICCIQAEYAahERAlDkrKDWgeSUcAYpQQUClCCAAANOAICNoAYowdxFwCmmFADAUMAsI4gADYAQDCRglDDWKMUQVcgwREEAQQABGGMECCOAEAQADYwDAkFGLGEOEGQIAAAoZACDgArooEAGMGOEoIgIxIAiWiBtHHFOKCYYgYQYZ4hCABhqkBJWGWIAoFIgDgQAwAgBACIGAIOUEcYAI4gQjimGAEBKQACUEIgwxBSQGAAgECAACIQYE1AQCgwThChhIOECAqmIAcAARgAQBBFRkEKKKUCIUIYBIxTSRDEggFLcIiUYEZA4hJBGQyGChDGKOIIEE0g5ZIWRxDKmoCEAMGGUAQQIAhxVSggHJDCICWGQZgIwA4hwACEGlIEEAEaBUEAAAYRhBAmlNCEAKAAIAkYIAARRQAhFBAFCKQEIAQYYZJwxgAAEiFWCCIAUEkYICBBDAg0BATDIAOCAAwYwYYQRCkCAgDEOGWAoMIAIA5wBhChABBDKAQIsQkQAoIBhSAlMmAEKEKCQEQAYIIAyCghEhCKAQAsRYY4ogowjFAjGnDGCIACEsIAoogQRgAgnEhDWESAUQwYxhZQRghlhAFFACFGcUEQBDQAiQhgjFrMIKAwEgAwogAhghigiCGCCmWUcQwAAIiwwQhEGjBmAEGCEkJABxagQ0GAwkDAAGAOQAoIAIIBQgCgijBEECEcNMwgDYBkRSgFmjSKEOOQQ8MoCpBABCiABhGCICIGIIUJYYgBwQgGAkDAKAGcoAAoIKIgBSBggjDAAAEaQQIJAARBDCABgiAAGCGAIMcwKhARhgBjAqCACAQiQAEgBJZASBhBgDQXYgkSMAAAIYBUDSACrgBAIGWQQUgAqo5gDlEhkALCCCEM44UAgoDgjShBiAQLAEgQFIUAZRoqSCClGCAhKIaAAAEYBoQwRCiBkAA";
+	public final static int TEST_DURATION = 264;
+	public final static String mp3FileName = "w4yr - 07 - City of the Future.mp3";
+
+	AcoustIdClient client = AcoustIdClient.Builder().apiKey("iZWMfBHr").build();
+
+	AcoustIdFingerprintCalculator fingerprinter = AcoustIdFingerprintCalculator.Builder()
+			.pathToFpCalc(Paths.get("d:\\apps\\fpcalc.exe")).build();
+
+	@Test
+	public void testCalculate() throws IOException, URISyntaxException {
+		URL mp3Resource = getClass().getClassLoader().getResource(mp3FileName);
+		Path audioFilePath = Paths.get(mp3Resource.toURI());
+		AcoustIdFingerprint fingerprint = fingerprinter.calculate(audioFilePath);
+
+		Assert.assertEquals(fingerprint.getDuration(), 131);
+	}
+
+	@Test
+	public void testLookup() throws IOException {
+		
+		Set<String> allArtists = new HashSet<>();
+		
+		AcoustIdLookupResults releases = client.lookupRecordings(TEST_DURATION, TEST_FINGERPRINT);
+		for (AcoustIdLookupResult result : releases.getResults()) {
+			for (Recording recording : result.getRecordings()) {
+				for (Artist artist : recording.getArtists()) {
+					allArtists.add( artist.getName() );
+				}
+			}
+		}
+
+		Assert.assertTrue( allArtists.contains("Foo Fighters"));
+	}
+
+}
