@@ -1,11 +1,11 @@
-package fr.mozvip.acoustid;
+package com.github.mozvip.acoustid;
 
 
 import java.util.List;
 
-import fr.mozvip.acoustid.model.Recording;
-import fr.mozvip.acoustid.model.Release;
-import fr.mozvip.acoustid.model.ReleaseGroup;
+import com.github.mozvip.acoustid.model.Recording;
+import com.github.mozvip.acoustid.model.Release;
+import com.github.mozvip.acoustid.model.ReleaseGroup;
 
 public class AcoustIdLookupResult {
 

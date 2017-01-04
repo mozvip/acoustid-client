@@ -1,12 +1,12 @@
-package fr.mozvip.acoustid;
+package com.github.mozvip.acoustid;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import fr.mozvip.acoustid.AcoustIdFingerprint;
-import fr.mozvip.acoustid.AcoustIdFingerprintCalculator;
+import com.github.mozvip.acoustid.AcoustIdFingerprint;
+import com.github.mozvip.acoustid.AcoustIdFingerprintCalculator;
 
 public class AudioFingerprintCalculatorTest {
 

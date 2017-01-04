@@ -1,9 +1,9 @@
-package fr.mozvip.acoustid.model;
+package com.github.mozvip.acoustid.model;
 
 
 import java.util.List;
 
-import fr.mozvip.acoustid.AcoustIdDate;
+import com.github.mozvip.acoustid.AcoustIdDate;
 
 public class Release {
 

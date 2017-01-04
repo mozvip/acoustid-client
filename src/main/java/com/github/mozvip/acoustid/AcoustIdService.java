@@ -1,4 +1,4 @@
-package fr.mozvip.acoustid;
+package com.github.mozvip.acoustid;
 
 
 import retrofit2.Call;

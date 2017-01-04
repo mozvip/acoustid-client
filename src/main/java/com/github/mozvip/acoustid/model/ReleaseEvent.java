@@ -1,6 +1,6 @@
-package fr.mozvip.acoustid.model;
+package com.github.mozvip.acoustid.model;
 
-import fr.mozvip.acoustid.AcoustIdDate;
+import com.github.mozvip.acoustid.AcoustIdDate;
 
 public class ReleaseEvent {
 	

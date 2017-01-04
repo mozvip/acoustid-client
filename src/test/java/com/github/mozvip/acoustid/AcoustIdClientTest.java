@@ -1,4 +1,4 @@
-package fr.mozvip.acoustid;
+package com.github.mozvip.acoustid;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,8 +10,14 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import fr.mozvip.acoustid.model.Artist;
-import fr.mozvip.acoustid.model.Recording;
+import com.github.mozvip.acoustid.AcoustIdClient;
+import com.github.mozvip.acoustid.AcoustIdFingerprint;
+import com.github.mozvip.acoustid.AcoustIdFingerprintCalculator;
+import com.github.mozvip.acoustid.AcoustIdLookupResult;
+import com.github.mozvip.acoustid.AcoustIdLookupResults;
+import com.github.mozvip.acoustid.model.Artist;
+import com.github.mozvip.acoustid.model.Recording;
+
 import junit.framework.Assert;
 
 public class AcoustIdClientTest {

@@ -1,4 +1,4 @@
-package fr.mozvip.acoustid.model;
+package com.github.mozvip.acoustid.model;
 
 
 public class Artist {
