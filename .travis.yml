@@ -5,4 +5,5 @@ sudo: false
 before_install:
 - wget https://github.com/acoustid/chromaprint/releases/download/v1.4.2/chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
 - tar xzvf chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
+- mv chromaprint-fpcalc-1.4.2-linux-x86_64/fpcalc .
 - chmod +x ./fpcalc
