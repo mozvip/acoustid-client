@@ -29,7 +29,7 @@ public class AcoustIdClientTest {
 	AcoustIdClient client = AcoustIdClient.Builder().apiKey("iZWMfBHr").build();
 
 	AcoustIdFingerprintCalculator fingerprinter = AcoustIdFingerprintCalculator.Builder()
-			.pathToFpCalc(Paths.get("d:\\apps\\fpcalc.exe")).build();
+			.pathToFpCalc(Paths.get("fpcalc")).build();
 
 	@Test
 	public void testCalculate() throws IOException, URISyntaxException {
