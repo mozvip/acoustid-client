@@ -12,11 +12,10 @@ before_install:
   - tar xzvf chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
   - mv chromaprint-fpcalc-1.4.2-linux-x86_64/fpcalc .
   - chmod +x ./fpcalc
-  - chmod +x .travis/deploy.sh
 deploy:
   -
     provider: script
-    script: .travis/deploy.sh
+    script: mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U
     skip_cleanup: true
     on:
       repo: mozvip/acoustid-client
@@ -24,7 +23,7 @@ deploy:
       jdk: oraclejdk8
   -
     provider: script
-    script: .travis/deploy.sh
+    script: mvn --settings .travis/settings.xml org.codehaus.mojo:versions-maven-plugin:2.1:set -DnewVersion=$TRAVIS_TAG 1>/dev/null 2>/dev/null; mvn clean deploy --settings .travis/settings.xml -DskipTests=true -B -U;
     skip_cleanup: true
     on:
       repo: mozvip/acoustid-client
