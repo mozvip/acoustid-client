@@ -1,9 +1,31 @@
 language: java
 jdk:
-- oraclejdk8
-sudo: false
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk7
+install:
+  - mvn --settings .travis/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 before_install:
-- wget https://github.com/acoustid/chromaprint/releases/download/v1.4.2/chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
-- tar xzvf chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
-- mv chromaprint-fpcalc-1.4.2-linux-x86_64/fpcalc .
-- chmod +x ./fpcalc
+  - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
+  - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
+  - wget https://github.com/acoustid/chromaprint/releases/download/v1.4.2/chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
+  - tar xzvf chromaprint-fpcalc-1.4.2-linux-x86_64.tar.gz
+  - mv chromaprint-fpcalc-1.4.2-linux-x86_64/fpcalc .
+  - chmod +x ./fpcalc
+deploy:
+  -
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: mozvip/acoustid-client
+      branch: master
+      jdk: oraclejdk8
+  -
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: mozvip/acoustid-client
+      tags: true
+      jdk: oraclejdk8
