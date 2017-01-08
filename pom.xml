@@ -5,6 +5,7 @@
 	<artifactId>acoustid-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>acoustid-client</name>
+	<description>A wrapper around the chromaprint fpcalc binary and client to the acoustid.org services</description>
 	<url>https://github.com/mozvip/acoustid-client</url>
 	<scm>
 		<url>https://github.com/mozvip/acoustid-client.git</url>
@@ -121,5 +122,4 @@
 			<version>3.5</version>
 		</dependency>
 	</dependencies>
-	<description>A wrapper around the chromaprint fpcalc binary and client to the acoustid.org services</description>
 </project>
